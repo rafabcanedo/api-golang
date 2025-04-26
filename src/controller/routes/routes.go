@@ -5,12 +5,14 @@ import (
 	"github.com/rafabcanedo/api-golang/src/controller"
 )
 
-func InitRoutes(r *gin.RouterGroup) {
+func InitRoutes(
+	r *gin.RouterGroup,
+	userController controller.UserControllerInterface) {
 	
-	r.GET("/users", controller.FindUsers)
-	r.GET("/getUserById/:userId", controller.FindUserById)
-	r.GET("/getUserByEmail/:userEmail", controller.FindUserByEmail)
-	r.POST("/users", controller.CreateUser)
-	r.PUT("/users/:userId", controller.UpdateUser)
-	r.DELETE("/users/:userId", controller.DeletUser)
+	r.GET("/users", userController.FindUsers)
+	r.GET("/getUserById/:userId", userController.FindUserById)
+	r.GET("/getUserByEmail/:userEmail", userController.FindUserByEmail)
+	r.POST("/users", userController.CreateUser)
+	r.PUT("/users/:userId", userController.UpdateUser)
+	r.DELETE("/users/:userId", userController.DeleteUser)
 }
