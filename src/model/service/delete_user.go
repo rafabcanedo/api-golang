@@ -1,7 +1,7 @@
-package model
+package service
 
 import "github.com/rafabcanedo/api-golang/src/configuration/rest_errors"
 
-func (*UserDomain) UpdateUser(string) *rest_errors.RestErrors {
+func (*userDomainService) DeleteUser(string) *rest_errors.RestErrors {
 	return nil
 }
