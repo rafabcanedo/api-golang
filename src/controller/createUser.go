@@ -2,29 +2,44 @@ package controller
 
 import (
 	"fmt"
-	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/rafabcanedo/api-golang/src/configuration/rest_errors"
+	"github.com/rafabcanedo/api-golang/src/configuration/logger"
 	"github.com/rafabcanedo/api-golang/src/configuration/validation"
 	"github.com/rafabcanedo/api-golang/src/controller/model/request"
+	"github.com/rafabcanedo/api-golang/src/controller/model/response"
+	"go.uber.org/zap"
 )
 
 func CreateUser(c *gin.Context) {
 
-	log.Println("Init CreateUser controller")
+	logger.Info("Init CreateUser controller",
+		zap.String("journey", "createUser"),
+	)
 	var userRequest request.UserRequest
 
 	if err := c.ShouldBindJSON(&userRequest); err != nil {
-		restError := rest_errors.NewBadRequestError(
-			fmt.Sprintf("There are some incorrect filds, error=%s\n", err.Error()))
 
-			errRest := validation.ValidateUserError(err)
+		logger.Error("Error trying to validate user info", err,
+		zap.String("journey", "createUser"))
+		errRest := validation.ValidateUserError(err)
 
-			c.JSON(restError.Code, errRest)
+			c.JSON(errRest.Code, errRest)
 
 			return
 	}
 
 	fmt.Println(userRequest)
+	response := response.UserResponse{
+		ID: "test",
+		Email: userRequest.Email,
+		Name: userRequest.Name,
+		Age: userRequest.Age,
+	}
+
+	logger.Info("User created successfully",
+	zap.String("journey", "createUser"))
+
+	c.JSON(http.StatusOK, response)
 }
