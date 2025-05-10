@@ -5,10 +5,9 @@ type UserDomainInterface interface {
 	GetEmail() string
 	GetPassword() string
 	GetAge() int8
+	GetID() string
 
 	SetID(string)
-
-	GetJSONValue() (string, error)
 
 	EncryptPassword()
 }
@@ -18,9 +17,9 @@ func NewUserDomain(
 	age int8,
 ) UserDomainInterface {
 	return &userDomain{
-		Name: name,
-		Email: email,
-		Password: password,
-		Age: age,
+		name: name,
+		email: email,
+		password: password,
+		age: age,
 	}
 }

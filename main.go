@@ -26,7 +26,6 @@ func main() {
 		return
 	}
 
-	// Init dependencies
 	userController := initDependencies(database)
 
 	router := gin.Default()

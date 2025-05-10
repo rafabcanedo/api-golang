@@ -7,6 +7,7 @@ import (
 	"github.com/rafabcanedo/api-golang/src/configuration/logger"
 	"github.com/rafabcanedo/api-golang/src/configuration/rest_errors"
 	"github.com/rafabcanedo/api-golang/src/model"
+	"github.com/rafabcanedo/api-golang/src/model/repository/entity/converter"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.uber.org/zap"
 )
