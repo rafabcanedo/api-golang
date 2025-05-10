@@ -46,7 +46,7 @@ func NewBadRequestValidationError(message string, causes []Causes) *RestErrors {
 	}
 }
 
-func NewINternalServerError(message string) *RestErrors {
+func NewInternalServerError(message string) *RestErrors {
 	return &RestErrors{
 		Message: message,
 		Err: "internal_server_error",
