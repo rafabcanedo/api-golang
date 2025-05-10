@@ -18,6 +18,9 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
+	// Init mongodb
+	
+
 	// Init dependencies
 	service := service.NewUserDomainService()
 	userController := controller.NewUserControllerInterface(service)
