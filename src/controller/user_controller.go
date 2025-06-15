@@ -14,7 +14,7 @@ func NewUserControllerInterface(
 }
 
 type UserControllerInterface interface {
-	FindUsers(c *gin.Context)
+	FindAllUsers(c *gin.Context)
 	FindUserById(c *gin.Context)
 	FindUserByEmail(c *gin.Context)
 

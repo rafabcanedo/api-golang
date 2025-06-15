@@ -21,9 +21,20 @@ type userDomainService struct {
 // because the layers are connection by interfaces
 // Use interface, the tests turns be easy
 type UserDomainService interface {
-	CreateUser(model.UserDomainInterface) (
+
+	CreateUserServices(model.UserDomainInterface) (
 		model.UserDomainInterface, *rest_errors.RestErrors)
+
+	FindAllUsersServices() (
+	[]model.UserDomainInterface, *rest_errors.RestErrors)
+
+	FindUserByIDServices(id string) (
+	model.UserDomainInterface, *rest_errors.RestErrors)
+
+	FindUserByEmailServices(email string) (
+	model.UserDomainInterface, *rest_errors.RestErrors)
+
 	UpdateUser(string, model.UserDomainInterface)  *rest_errors.RestErrors
-	FindUser(string) (*model.UserDomainInterface, *rest_errors.RestErrors)
+
 	DeleteUser(string) *rest_errors.RestErrors
 }
